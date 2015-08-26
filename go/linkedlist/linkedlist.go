@@ -13,10 +13,10 @@ func NewLinkedList() *LinkedList {
   return &LinkedList{Head: nil}
 }
 
-func (l *LinkedList) insert(data interface{}) *LinkedList {
+func (l *LinkedList) insert(data interface{}) {
   if l.Head == nil {
     l.Head = &Node{data, nil}
-    return l
+    return
   }
 
   new_node := &Node{data, nil}
@@ -27,14 +27,12 @@ func (l *LinkedList) insert(data interface{}) *LinkedList {
   }
 
   cur_node.Next = new_node
-  return l
 }
 
-func (l *LinkedList) delete(data interface{}) *LinkedList {
+func (l *LinkedList) delete(data interface{}) {
   if l.Head.Data == data {
-    cur_node := l.Head
-    l.Head = cur_node.Next
-    return l
+    l.Head = l.Head.Next
+    return
   }
 
   prev_node := l.Head
@@ -46,6 +44,4 @@ func (l *LinkedList) delete(data interface{}) *LinkedList {
   }
 
   prev_node.Next = cur_node.Next
-
-  return l
 }
