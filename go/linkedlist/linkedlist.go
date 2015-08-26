@@ -47,5 +47,7 @@ func (l *LinkedList) delete(data interface{}) {
     cur_node = cur_node.Next
   }
 
-  prev_node.Next = cur_node.Next
+  if cur_node.Data == data {
+    prev_node.Next = cur_node.Next
+  }
 }

@@ -87,7 +87,7 @@ func TestDeletionMiddle(t *testing.T) {
   cur_node := list.Head
 
   for i,e := range expected {
-    if cur_node.Data != expected[i] {
+    if cur_node.Data != e {
       t.Errorf("data at index %v == %v, want %v", i, cur_node.Data, e)
     }
     cur_node = cur_node.Next
@@ -100,5 +100,26 @@ func TestDeletionFromEmpty(t *testing.T) {
 
   if list.Head != nil {
     t.Errorf("list.Head not nil")
+  }
+}
+
+func TestDeletionOfMissingElement(t *testing.T) {
+  list := NewLinkedList()
+
+  expected := [3]string{"one", "two", "three"}
+
+  for _,e := range expected {
+    list.insert(e)
+  }
+
+  list.delete("four")
+
+  cur_node := list.Head
+
+  for i,e := range expected {
+    if cur_node.Data != e {
+      t.Errorf("data at index %v == %v, want %v", i, cur_node.Data, e)
+    }
+    cur_node = cur_node.Next
   }
 }
