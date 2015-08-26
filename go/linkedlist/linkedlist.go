@@ -30,6 +30,10 @@ func (l *LinkedList) insert(data interface{}) {
 }
 
 func (l *LinkedList) delete(data interface{}) {
+  if l.Head == nil {
+    return
+  }
+
   if l.Head.Data == data {
     l.Head = l.Head.Next
     return

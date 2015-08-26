@@ -93,3 +93,12 @@ func TestDeletionMiddle(t *testing.T) {
     cur_node = cur_node.Next
   }
 }
+
+func TestDeletionFromEmpty(t *testing.T) {
+  list := NewLinkedList()
+  list.delete("nothing")
+
+  if list.Head != nil {
+    t.Errorf("list.Head not nil")
+  }
+}
